@@ -1,26 +1,164 @@
 @import "tailwindcss";
 
+/* ════════════════════════════════════════════════════════
+   DESIGN TOKENS
+════════════════════════════════════════════════════════ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg:      hsl(214, 50%, 8%);
+  --surface: hsl(214, 45%, 11%);
+  --border:  hsl(214, 35%, 18%);
+  --neon:    hsl(74, 100%, 50%);
+  --neon-rgb: 191, 255, 0;
+  --muted:   hsl(214, 20%, 60%);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+html { scroll-behavior: smooth; }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: #fff;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+* { box-sizing: border-box; }
+
+/* scrollbar */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb {
+  background: var(--neon);
+  border-radius: 2px;
+}
+
+::selection {
+  background: hsla(74, 100%, 50%, 0.3);
+  color: #fff;
+}
+
+/* ════════════════════════════════════════════════════════
+   UTILITY CLASSES
+════════════════════════════════════════════════════════ */
+
+/* Neon text */
+.neon { color: var(--neon); }
+
+/* Neon pill button */
+.btn-neon {
+  background: var(--neon);
+  color: #000;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-radius: 9999px;
+  padding: 0.65rem 1.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.25s ease;
+  box-shadow: 0 0 40px hsla(74, 100%, 50%, 0.35);
+  cursor: pointer;
+  border: none;
+  font-size: 0.8rem;
+}
+.btn-neon:hover {
+  box-shadow: 0 0 60px hsla(74, 100%, 50%, 0.55);
+  transform: translateY(-1px);
+}
+
+/* Ghost border pill button */
+.btn-ghost {
+  background: transparent;
+  color: #fff;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-radius: 9999px;
+  padding: 0.65rem 1.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1.5px solid var(--border);
+  transition: all 0.25s ease;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+.btn-ghost:hover {
+  border-color: hsla(74, 100%, 50%, 0.5);
+  color: var(--neon);
+}
+
+/* Nav ghost */
+.btn-nav-ghost {
+  background: transparent;
+  color: var(--muted);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: 9999px;
+  padding: 0.45rem 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+  cursor: pointer;
+  font-size: 0.75rem;
+}
+.btn-nav-ghost:hover {
+  color: #fff;
+  border-color: var(--border);
+}
+
+/* Surface card */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.card-glow {
+  box-shadow: 0 0 40px hsla(74, 100%, 50%, 0.06);
+  border-color: hsla(74, 100%, 50%, 0.35) !important;
+}
+
+/* Neon icon box */
+.icon-box {
+  width: 44px;
+  height: 44px;
+  background: hsla(74, 100%, 50%, 0.12);
+  border: 1px solid hsla(74, 100%, 50%, 0.25);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--neon);
+  flex-shrink: 0;
+}
+
+/* Stats band */
+.stats-band {
+  background: hsl(214, 48%, 6%);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Section label */
+.section-label {
+  font-size: 0.7rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--neon);
+}
+
+/* Radial neon glow bg */
+.radial-glow {
+  background: radial-gradient(circle at 50% 50%, hsla(74, 100%, 50%, 0.06) 0%, transparent 70%);
+}
+
+/* Divider */
+.divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border), transparent);
 }
