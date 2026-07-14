@@ -32,7 +32,7 @@ export default function About() {
                 I&apos;m{' '}
                 <span className="text-white font-black">Abdhul Kareem L</span>, a
                 Computer Science Engineering student at Sri Eshwar College of Engineering,
-                Coimbatore. Currently in my 3rd semester with a CGPA of 7.71.
+                Coimbatore. Currently in my 4th semester with a CGPA of 8.1.
               </p>
               <p className="text-base leading-relaxed" style={{ color: 'var(--muted)' }}>
                 My journey started with a Diploma (91%) at Al-Ameen Polytechnic College,
